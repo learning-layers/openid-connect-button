@@ -29,8 +29,26 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// definition of variables relevant to OpenID Connect
+/**
+* OpenID Connect Button
+* 
+* This library realizes An OpenID Connect Button allowing arbitrary browser-based 
+* Web applications to authenticate and get access to user information using an 
+* external OpenID Connect Provider. The application itself must be registered as 
+* client at the OpenID Connect provider. In ./index.html we demonstrate the use
+* of the OpenID Connect Button. Developers are advised to follow the included 
+* documentation until a full tutorial becomes available.
+*/
+
+//TODO: write full tutorial including client registration
+
+// Definition of variables relevant to OpenID Connect
+// These variables are available to developers for an easy and convenient 
+// access to OpenID Connect related information.
+ 
 var oidc_server; // OpenID Connect Provider URL
+var oidc_name; // OpenID Connect Provider Name
+var oidc_logo; // OpenID Connect Provider Logo URL
 var oidc_clientid; // OpenID Connect Client ID
 var oidc_scope; // OpenID Connect Scope
 var oidc_callback; // OpenID Connect Redirect Callback
@@ -49,6 +67,15 @@ try{
 			oidc_server = $(".oidc-signin").attr("data-server");
 			if(oidc_server === undefined || oidc_server === ""){
 				throw("Warning: OpenID Connect signin button does not define server URL!");
+			}
+			oidc_name = $(".oidc-signin").attr("data-name");
+			if(oidc_name === undefined || oidc_name === ""){
+				throw("Warning: OpenID Connect signin button does not define a provider name!");
+			}
+			oidc_logo = $(".oidc-signin").attr("data-logo");
+			//TODO: validate image URL (e.g. check for image mimetype with head request)
+			if(oidc_logo === undefined || oidc_logo === ""){
+				throw("Warning: OpenID Connect signin button does not define a provider logo URL!");
 			}
 			oidc_clientid = $(".oidc-signin").attr("data-clientid");
 			if(oidc_clientid === undefined || oidc_clientid === ""){
@@ -125,13 +152,13 @@ function renderButton(signin){
 	$(".oidc-signin").unbind( "click" );
 	$(".oidc-signin").addClass("btn").addClass("btn-lg");
 	if(signin){
-		$(".oidc-signin").removeClass("btn-success").addClass("btn-default").html("<img src='http://learning-layers.eu/wp-content/themes/learninglayers/images/logo.png' height='32px'/>    Sign in");
+		$(".oidc-signin").removeClass("btn-success").addClass("btn-default").html("<img src='" + oidc_logo + "' height='32px'/> Sign in with <i>" + oidc_name + "</i>");
 		$(".oidc-signin").click(function (e){
 			var url = oidc_provider_config.authorization_endpoint + "?response_type=id_token%20token&client_id=" + oidc_clientid + "&scope=" + oidc_scope;
 			window.location.href = url;
 		});
 	} else {
-		$(".oidc-signin").removeClass("btn-default").addClass("btn-success").html("<img height='32px' src='http://learning-layers.eu/wp-content/themes/learninglayers/images/logo.png'/>    Sign out");
+		$(".oidc-signin").removeClass("btn-default").addClass("btn-success").html("<img height='32px' src='" + oidc_logo + "'/> Sign out from <i>" + oidc_name + "</i>");
 		$(".oidc-signin").click(function (e){
 			window.location.href = oidc_server;
 		});

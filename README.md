@@ -5,4 +5,5 @@ An OpenID Connect Button allowing arbitrary browser-based Web applications to au
 
 Tutorial
 --
-TODO: write tutorial; for now, refer to well-documented sample in index.html
+For now, refer to the well-documented sample client in index.html.
+TODO: write tutorial; 
