@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Dominik Renzel, Advanced Community Information Systems (ACIS) Group, 
+Chair of Computer Science 5 (Databases & Information Systems), RWTH Aachen University, Germany
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the ACIS Group nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A simple example of a client using the OpenID Connect Button." />
+		<title>OpenID Connect Test Client</title>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	</head>
+	<body>
+
+		<div class="container">
+			<h1>Using the OpenID Connect Button</h1>
+			<div>
+				The OpenID Connect Button allows arbitrary browser-based Web applications to authenticate and get access to user information maintained by an external OpenID Connect Provider. The application itself must be registered as client at the OpenID Connect provider. In the example below, we chose the OpenID Connect test provider installed in the i5Cloud, a cloud infrastructure
+				maintained at RWTH Aachen University, Germany.
+			</div>
+			<!-- OpenID Connect Button 2: add HTML element representing button -->
+			<span id="signinButton">
+				<span class="oidc-signin"
+					data-callback="signinCallback" 
+					data-server="http://cloud15.dbis.rwth-aachen.de:9085/oidc"
+					data-clientid="e51787a0-8ffd-480a-a0c8-66a627fe6e24"
+					data-scope="openid phone email address profile">
+				</span>
+			</span>
+			
+			<h2 id="status"/>
+		</div>
+		
+		<!-- import jQuery for AJAX calls (must) -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		
+		<!-- import Bootstrap for responsive UI (optional) -->
+		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+
+			// OpenID Connect Button 3: implement a callback function
+			function signinCallback(result) {
+				if(result === "success"){
+					// at this point, developers have access to several pieces of information
+					// relevant to OpenID Connect (see ./oidc-button.js)
+					console.log("signed in ");
+					console.log(oidc_userinfo);
+					$("#status").html("Hello, " + oidc_userinfo.name + "!");
+				} else {
+					console.log("not signed in...");
+					console.log(result);
+					$("#status").html("Do I know you?!");
+				}
+			}
+		</script>
+		
+		<!--  
+		<!-- OpenID Connect Button 1: add this script element right before closing </body> tag -->
+		<script type="text/javascript">
+		  (function() {
+		   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		   po.src = './oidc-button.js';
+		   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		 })();
+		</script>
+	</body>
+</html>
