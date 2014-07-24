@@ -9,12 +9,10 @@ TODO: add link to working online demo.
 
 Developer Tutorial
 ==
-This tutorial provides step-by-step instructions on how to instrument an arbitrary Web page client with the OpenID Connect Button to enable authentication and access to user information. The button is automatically rendered based on a couple of attributes that define OpenID Connect-relevant configuration details. Developers receive access to different OpenID Connect related information such as provider configuration, tokens, and user information. 
+This tutorial provides step-by-step instructions on how to instrument an arbitrary Web page client with the OpenID Connect Button to enable authentication and access to user information. The button is automatically rendered based on a couple of attributes that define OpenID Connect-relevant configuration details. Developers receive access to different OpenID Connect related information such as provider configuration, tokens, and user information. When users of a client sign in with an OpenID Connect provider, the client gets an *access token*, which can be further used to make calls to service APIs capable of interacting with the OpenID Connect provider.
 
-Add the OpenID Connect Button
+Add the OpenID Connect Button to a Web page
 --
-When users of a client sign in with an OpenID Connect provider, the client gets an access token, which can be further used to make calls to service APIs capable of interacting with the OpenID Connect provider.
-
 Adding the OpenID Connect button to a Web page client is done in four simple steps:
 
 - __Step 1: Register page as OpenID Connect client.__
@@ -23,9 +21,9 @@ Adding the OpenID Connect button to a Web page client is done in four simple ste
 - __Step 4: Handle sign in with JavaScript callback.__
 
 ###Step 1: Register page as OpenID Connect client
-First step is to make the OpenID Connect server aware of your client page. Necessary prerequisite is that your page is deployed under a publicly accessible URL, ideally hosted on a secure HTTP server. Therefore, you need to provide a couple of details about your client to the OpenID Connect server (most importantly a redirect URI). In turn, the server generates a client ID and a secret to be used in later steps.
+First step is to make the OpenID Connect server aware of your client page. Necessary prerequisite is that your page is deployed under a publicly accessible URL, ideally hosted on a secure HTTP server. Therefore, you need to provide a couple of details about your client to the OpenID Connect server (most importantly a redirect URI). In turn, the server generates a client ID and a client secret to be used in later steps.
 
-OpenID Connect client registration looks different on different server implementations. In this section, we walk you through the dialogs provided by the Open Source [MITREid Connect Server](https://github.com/mitreid-connect/) version 1.1.8 we have been using to develop.
+OpenID Connect client registration frontends look different on different server implementations. In this section, we walk you through the dialogs provided by the Open Source [MITREid Connect Server](https://github.com/mitreid-connect/) version 1.1.8.
 
 1. Log in to the OpenID Connect server (register for an account, if necessary).
 1. In the *Developer* section in the menu on the left choose __*Self-service client registration*__.
@@ -121,4 +119,4 @@ function signinCallback(result) {
 ```
 License
 --
-The OpenID Connect Button is released under a 3-clause BSD [license] by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.
+The OpenID Connect Button is released under a 3-clause BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.
