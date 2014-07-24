@@ -25,15 +25,30 @@ Adding the OpenID Connect button to a Web page client is done in four simple ste
 ###Step 1: Register page as OpenID Connect client
 First step is to make the OpenID Connect server aware of your client page. Necessary prerequisite is that your page is deployed under a publicly accessible URL, ideally hosted on a secure HTTP server. Therefore, you need to provide a couple of details about your client to the OpenID Connect server (most importantly a redirect URI). In turn, the server generates a client ID and a secret to be used in later steps.
 
-OpenID Connect client registration looks different on different server implementations. In this section, we walk you through the dialogs provided by the Open Source [MITREid Connect Server](https://github.com/mitreid-connect/) we have been using to develop.
+OpenID Connect client registration looks different on different server implementations. In this section, we walk you through the dialogs provided by the Open Source [MITREid Connect Server](https://github.com/mitreid-connect/) version 1.1.8 we have been using to develop.
 
-1. Log in to the OpenID Connect server (register for an account, if necessary)
-1. In the menu on the left click 
-TODO: finish section
+1. Log in to the OpenID Connect server (register for an account, if necessary).
+1. In the *Developer* section in the menu on the left choose __*Self-service client registration*__.
+1. Click the button __*Register a new client*__.
+1. A page __*New Client*__ with six tabs *Main*, *Access*, *Credentials*, *Crypto*, *Other*, and *JSON* will open. In the next steps, configure your client on each of the tabs. Be sure to press *__Save__* after completing every tab!
+-- 1. Tab *Main* 
+---- 1. enter an arbitrary *Client name*
+---- 1. paste the deploy URL of your client page as *Redirect URI* and click the "+" button
+---- 1. optionally fill in all other fields
+-- 1. Tab *Access*
+---- 1. for *Grant Types* choose __*implicit*__
+---- 1. for *Response Types* check fields __*token*__, __*id_token*__, and __*token id_token*__ (uncheck all other boxes)
+-- 1. Tab *Credentials*: keep *Token Endpoint Authentication Method* on __*Client Secret over HTTP Basic*__
+-- 1. Tab *Crypto*: leave all fields on __*Use server default*__
+-- 1. Tab *Other*: nothing to do here for now
+-- 1. Tab *JSON*: shows a JSON representation of your client configuration
+1. Go back to tab *Main* and copy values for *Client ID* and *Registration Access Token*.
+1. __Store values for Client ID and Registration Access Token in a safe place! You will need them for using the OpenID Connect Button and for any re-configuration of your OpenID Connect client!__
+1. In case you have to re-configure your client, select __*Self-service client registration*__ from the *Developer* section in the menu on the left, enter Client ID and Registration Access Token in the fields on the right and click the button __*Edit an existing client*__. If you are an administrator of the OpenID Connect server, you can make use of the menu entry __*Manage Clients*__ in the *Administrative* section in the menu on the left.
 
 ###Step 2: Include OpenID Connect Button script on client page
 
-Include the following script just before the closing </body> tag:
+Include the following script just before the closing body tag:
 ```html
 <!-- Place this asynchronous JavaScript just before your </body> tag -->
 <script type="text/javascript">
