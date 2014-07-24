@@ -121,4 +121,4 @@ function signinCallback(result) {
 ```
 License
 --
-The OpenID Connect Button is released under a 3-clause BSD license.
+The OpenID Connect Button is released under a 3-clause BSD [license] by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.
