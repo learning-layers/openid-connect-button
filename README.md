@@ -101,7 +101,7 @@ When sign in is successful, the result simply contains the string "success". At 
 | *oidc_callback*| OpenID Connect Button sign in callback function |
 | *oidc_provider_config* | OpenID Connect Provider configuration as retrieved via [OpenID Connect Discovery](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse)
 | *oidc_userinfo* | OpenID Connect user info claim as retrieved from the [OpenID Connect User Info](http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) endpoint.
-| *oidc_idtoken* | OpenID Connect ID token payload (cf. [OpenID Connect Core](http://openid.net/specs/openid-connect-core-1_0.html#IDToken))|
+| *oidc_idtoken* | (not yet implemented) OpenID Connect ID token payload (cf. [OpenID Connect Core](http://openid.net/specs/openid-connect-core-1_0.html#IDToken))|
 If the user is not signed-in, the result represents the respective error message describing the cause of the failed sign in. Causes include authentication errors, denial of access to user information expressed by user in OpenID Connect consent dialog, invalid tokens, etc.
 
 The following example of a callback function greets the signed in user with a welcome message displayed in an HTML element with id "status" in case sign in succeeded and in case of an error logs the cause on the console.
