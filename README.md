@@ -77,7 +77,7 @@ Include a HTML element that represents the OpenID Connect Button. The script inc
 The HTML element must define the following data attributes:
 
 | Attribute Name       | Description |
-| ----------------     |-------------|
+| ---------------------|-------------|
 | *data-name*     | Name of the OpenID Connect Provider |
 | *data-logo*     | URL of an OpenID Connect Provider logo |
 | *data-server*   | URL of the OpenID Connect Provider server | 
