@@ -87,8 +87,8 @@ The HTML element must define the following data attributes:
 | *data-scope*    | Space-separated OpenID Connect scopes. The standard scope is simply "openid", but other scopes are usually also available (e.g. email, address, profile). A full list of scopes supported by the OpenID Connect provider is available via OpenID Connect discovery of provider configuration (see below for more information) |
 | *data-callback* | Name of a callback function defined in a script tag of the client page handling the outcome of the sign in process done by the button (see next step). |
 
-Step 4: Handle sign in with JavaScript callback
---
+###Step 4: Handle sign in with JavaScript callback
+
 In a script of your client page define a JavaScript function that is triggered after the OpenID Connect Button is loaded. The name of the function must match the value of the *data-callback* attribute of the HTML element defined in Step 3. The function is passed an object that represents the authorization result.
 
 When sign in is successful, the result simply contains the string "success". At this point, you have access to the following variables representing OpenID Connect-related information:
