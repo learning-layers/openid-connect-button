@@ -3,13 +3,15 @@ openid-connect-button
 
 An OpenID Connect Button to instrument Web pages with OpenID Connect authentication and access to user information using an external OpenID Connect Provider via the OpenID Connect [implicit flow](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth). 
 
-Adding the OpenID Connect Button to a Web Page
-==
-In this small tutorial we demonstrate how to instrument an arbitrary Web page client with the OpenID Connect Button to enable authentication and access to user information. The button is automatically rendered based on a couple of attributes that define OpenID Connect-relevant configuration details. Developers receive access to different OpenID Connect related information such as provider configuration, tokens, and user information. 
-
 Try it
 --
 TODO: add link to working online demo.
+
+Developer Tutorial
+==
+This developer tutorial demonstrates how to instrument an arbitrary Web page client with the OpenID Connect Button to enable authentication and access to user information. The button is automatically rendered based on a couple of attributes that define OpenID Connect-relevant configuration details. Developers receive access to different OpenID Connect related information such as provider configuration, tokens, and user information. 
+
+
 
 Add the OpenID Connect Button
 --
@@ -31,8 +33,8 @@ OpenID Connect client registration looks different on different server implement
 1. In the *Developer* section in the menu on the left choose __*Self-service client registration*__.
 1. Click the button __*Register a new client*__.
 1. A page __*New Client*__ with six tabs *Main*, *Access*, *Credentials*, *Crypto*, *Other*, and *JSON* will open. In the next steps, configure your client on each of the tabs. Be sure to press *__Save__* after completing every tab!
--- 1. Tab *Main* 
----- 1. enter an arbitrary *Client name*
+  1. Tab *Main* 
+    1. enter an arbitrary *Client name*
 ---- 1. paste the deploy URL of your client page as *Redirect URI* and click the "+" button
 ---- 1. optionally fill in all other fields
 -- 1. Tab *Access*
