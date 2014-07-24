@@ -3,6 +3,8 @@ openid-connect-button
 
 An OpenID Connect Button to instrument Web pages with OpenID Connect authentication and access to user information using an external OpenID Connect Provider via the OpenID Connect [implicit flow](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth). 
 
+![OpenID Connect Button sample instance](./oidc-button-sample.png "OpenID Connect Button sample instance")
+
 Try it
 --
 TODO: add link to working online demo.
