@@ -100,7 +100,6 @@ When sign in is successful, the result simply contains the string "success". At 
 | *oidc_logo*    | OpenID Connect Provider logo URL |
 | *oidc_clientid*| OpenID Connect client ID |
 | *oidc_scope*   | OpenID Connect scope |
-| *oidc_callback*| OpenID Connect Button sign in callback function |
 | *oidc_provider_config* | OpenID Connect Provider configuration as retrieved via [OpenID Connect Discovery](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse)
 | *oidc_userinfo* | OpenID Connect user info claim as retrieved from the [OpenID Connect User Info](http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) endpoint.
 | *oidc_idtoken* | (not yet implemented) OpenID Connect ID token payload (cf. [OpenID Connect Core](http://openid.net/specs/openid-connect-core-1_0.html#IDToken))|
