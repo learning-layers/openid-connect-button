@@ -65,14 +65,14 @@ Include the following script just before the closing body tag:
 
 ###Step 3: Add HTML element representing button to the client page
 
-Include a HTML element that represents the OpenID Connect Button. The script included in the previous step will transform the element into a button appearance.
+Include a HTML element that represents the OpenID Connect Button. The script included in the previous step will transform the element into a button appearance. Use the client ID you retrieved from step 1.
 ```html
 <span class="oidc-signin"
 	data-callback="signinCallback"
 	data-name="Learning Layers"
 	data-logo="http://learning-layers.eu/wp-content/themes/learninglayers/images/logo.png"
-	data-server="http://cloud15.dbis.rwth-aachen.de:9085/oidc"
-	data-clientid="e51787a0-8ffd-480a-a0c8-66a627fe6e24"
+	data-server="http://api.learning-layers.eu/oidc"
+	data-clientid="CLIENTID"
 	data-scope="openid phone email address profile">
 </span>
 ```
