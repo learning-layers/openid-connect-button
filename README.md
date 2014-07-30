@@ -56,7 +56,7 @@ Include the following script just before the closing body tag:
     var po = document.createElement('script'); 
     po.type = 'text/javascript'; 
     po.async = true;
-    po.src = '';
+    po.src = './oidc-button.js';
     var s = document.getElementsByTagName('script')[0]; 
     s.parentNode.insertBefore(po, s);
   })();
@@ -71,7 +71,7 @@ Include a HTML element that represents the OpenID Connect Button. The script inc
 	data-callback="signinCallback"
 	data-name="Learning Layers"
 	data-logo="http://learning-layers.eu/wp-content/themes/learninglayers/images/logo.png"
-	data-server="http://api.learning-layers.eu/oidc"
+	data-server="http://api.learning-layers.eu/o/oauth2"
 	data-clientid="CLIENTID"
 	data-scope="openid phone email address profile">
 </span>
