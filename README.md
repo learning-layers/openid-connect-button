@@ -63,6 +63,8 @@ Include the following script just before the closing body tag:
 </script>
 ```
 
+The OpenID Connect Button script depends on [jQuery](http://jquery.com/), [bootstrap](http://getbootstrap.com/), [jsjws](https://github.com/kjur/jsjws), and [jsrsasign](https://github.com/kjur/jsrsasign). Be sure to include all required dependencies to JS and CSS, as demonstrated in `index.html`.
+
 ###Step 3: Add HTML element representing button to the client page
 
 Include a HTML element that represents the OpenID Connect Button. The script included in the previous step will transform the element into a button appearance. Use the client ID you retrieved from step 1.
@@ -121,4 +123,4 @@ function signinCallback(result) {
 ```
 License
 --
-The OpenID Connect Button is released under the BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany. The OpenID Connect Button uses the [jsjws](https://github.com/kjur/jsjws) and [jsrsasign](https://github.com/kjur/jsrsasign) libraries by Kenji Urushima.  
+The OpenID Connect Button is released under the BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.  
