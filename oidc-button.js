@@ -40,8 +40,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * documentation until a full tutorial becomes available.
 */
 
-//TODO: write full tutorial including client registration
-
 // Definition of variables relevant to OpenID Connect
 // These variables are available to developers for an easy and convenient 
 // access to OpenID Connect related information.
@@ -59,6 +57,7 @@ var oidc_idtoken; // OpenID Connect ID Token (human-readable)
 // OpenID Connect Button initialization. 
 // Exceptions and debug messages are logged to the console.
 try{
+	
 	(function() {
 		
 		if($(".oidc-signin")){
@@ -91,6 +90,11 @@ try{
 			} else {
 				oidc_callback = window[cbname];
 			}
+			oidc_size = $(".oidc-signin").attr("data-size");
+			if(oidc_size === "undefined" || (oidc_size !== "lg" && oidc_size !== "sm" && oidc_size !== "xs")){
+				console.log("Size undefined. Using default.");
+				oidc_size = "default";
+			}
 			
 			//console.log("OpenID Connect Server: " + oidc_server);
 			//console.log("OpenID Connect Client ID: " + oidc_clientid);
@@ -107,8 +111,11 @@ try{
 					// after successful retrieval of server configuration, check auth status
 					if(checkAuth()){
 						// first parse id token
-						//oidc_idtoken = getIdToken();
-						
+						try{
+						oidc_idtoken = getIdToken();
+						} catch(e) {
+							console.log("WARNING: " + e);
+						}
 						// TODO: parse
 						
 						// then use access token and retrieve user info
@@ -150,15 +157,20 @@ try{
 **/
 function renderButton(signin){
 	$(".oidc-signin").unbind( "click" );
-	$(".oidc-signin").addClass("btn").addClass("btn-lg");
+	$(".oidc-signin").addClass("btn").addClass("btn-" + oidc_size);
+	var size = 32;
+	if(oidc_size === "xs" || oidc_size === "sm"){
+		size = 16;
+	}
+	
 	if(signin){
-		$(".oidc-signin").removeClass("btn-success").addClass("btn-default").html("<img src='" + oidc_logo + "' height='32px'/> Sign in with <i>" + oidc_name + "</i>");
+		$(".oidc-signin").removeClass("btn-success").addClass("btn-default").html("<img style='margin-right:5px' src='" + oidc_logo + "' height='" + size + "px'/> Sign in with <i>" + oidc_name + "</i>");
 		$(".oidc-signin").click(function (e){
 			var url = oidc_provider_config.authorization_endpoint + "?response_type=id_token%20token&client_id=" + oidc_clientid + "&scope=" + oidc_scope;
 			window.location.href = url;
 		});
 	} else {
-		$(".oidc-signin").removeClass("btn-default").addClass("btn-success").html("<img height='32px' src='" + oidc_logo + "'/> Sign out from <i>" + oidc_name + "</i>");
+		$(".oidc-signin").removeClass("btn-default").addClass("btn-success").html("<img style='margin-right:5px;' height='" + size + "px' src='" + oidc_logo + "'/> " + oidc_userinfo.name);
 		$(".oidc-signin").click(function (e){
 			window.location.href = oidc_server;
 		});
@@ -177,6 +189,7 @@ function getProviderConfig(provider,cb){
 	  {
 		type: 'GET',
 		dataType: 'json',
+		crossdomain: true,
 		complete: function (resp,status) {
 			cb(resp.responseJSON);
 		},
@@ -213,24 +226,26 @@ function getUserInfo(cb){
 	);
 }
 /**
-* TODO: parses OpenID Connect ID token into human-readable JWS according to the OpenID Connect specification
+* parses OpenID Connect ID token into human-readable JWS according to the OpenID Connect specification
 * (cf. http://openid.net/specs/openid-connect-core-1_0.html#IDToken). Requires the availability of a hashed 
 * OpenID Connect ID token in the browser's local storage ("id_token"). Token validity is not checked.
 **/
-/*	
-function getOpenIDConnectIdToken() {
+function getIdToken() {
+	
+	if(!KJUR.jws) {
+		throw("Cannot parse OpenID Connect ID token! KJUR.jws not available!");
+	} else {
+		var jws = new KJUR.jws.JWS();
+		var result = 0;
+		try {
+			result = jws.parseJWS(window.localStorage["id_token"]);
+		} catch (ex) {
+			console.log("Warning: " + ex);
+		}
 
-	var jws = new KJUR.jws.JWS();
-	var result = 0;
-	try {
-		result = jws.parseJWS(window.localStorage["id_token"]);
-	  } catch (ex) {
-		//console.log("Warning: " + ex);
+		return jws.parsedJWS;
 	}
-
-	return jws.parsedJWS;
 }
-*/
 
 /**
 * checks for the availability of OpenID Connect tokens (access token and ID token). 
@@ -266,4 +281,4 @@ function parseFragment(){
 		params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
 	}
 	return params;
-}	
+}
