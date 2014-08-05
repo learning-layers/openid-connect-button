@@ -82,6 +82,7 @@ The HTML element must define the following data attributes:
 | ---------------------|-------------|
 | *data-name*     | Name of the OpenID Connect Provider |
 | *data-logo*     | URL of an OpenID Connect Provider logo (ideally 32px high SVG/PNG with transparent background)|
+| *data-size*     | Display size of the button ('xs': extrasmall, 'sm': small, 'default': default, 'lg': large)|
 | *data-server*   | URL of the OpenID Connect Provider server | 
 | *data-clientid* | OpenID Connect client ID as retrieved in Step 1 |
 | *data-scope*    | Space-separated OpenID Connect scopes. The standard scope is simply "openid", but other scopes are usually also available (e.g. email, address, profile). A full list of scopes supported by the OpenID Connect provider is available via OpenID Connect discovery of provider configuration (see below for more information) |
@@ -102,7 +103,7 @@ When sign in is successful, the result simply contains the string "success". At 
 | *oidc_scope*   | OpenID Connect scope |
 | *oidc_provider_config* | OpenID Connect Provider configuration as retrieved via [OpenID Connect Discovery](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse)
 | *oidc_userinfo* | OpenID Connect user info claim as retrieved from the [OpenID Connect User Info](http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) endpoint.
-| *oidc_idtoken* | (not yet implemented) OpenID Connect ID token payload (cf. [OpenID Connect Core](http://openid.net/specs/openid-connect-core-1_0.html#IDToken))|
+| *oidc_idtoken* | OpenID Connect ID token including parsed payload (cf. [OpenID Connect Core](http://openid.net/specs/openid-connect-core-1_0.html#IDToken))|
 If the user is not signed-in, the result represents the respective error message describing the cause of the failed sign in. Causes include authentication errors, denial of access to user information expressed by user in OpenID Connect consent dialog, invalid tokens, etc.
 
 The following example of a callback function greets the signed in user with a welcome message displayed in an HTML element with id "status" in case sign in succeeded and in case of an error logs the cause on the console.
@@ -120,4 +121,4 @@ function signinCallback(result) {
 ```
 License
 --
-The OpenID Connect Button is released under a 3-clause BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.
+The OpenID Connect Button is released under the BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany. The OpenID Connect Button uses the [jsjws](https://github.com/kjur/jsjws) and [jsrsasign](https://github.com/kjur/jsrsasign) libraries by Kenji Urushima.  
