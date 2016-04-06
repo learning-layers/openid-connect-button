@@ -7,6 +7,19 @@ An OpenID Connect Button to instrument Web pages with OpenID Connect authenticat
 
 Try it
 --
+
+**Table of Contents**
+
+- [openid-connect-button](#)
+	- [Try it](#)
+- [Developer Tutorial](#)
+	- [Add the OpenID Connect Button to a Web page](#)
+		- [Step 1: Register page as OpenID Connect client](#)
+		- [Step 2: Include OpenID Connect Button script on client page](#)
+		- [Step 3: Add HTML element representing button to the client page](#)
+		- [Step 4: Handle sign in with JavaScript callback](#)
+	- [License](#)
+
 TODO: add link to working online demo.
 
 Developer Tutorial
