@@ -156,5 +156,5 @@ Framework plugins
 <a name="meteor-framework"/>
 Meteor (web framework)
 --
-For the meteor web framework you can add the Learning Layers OpenID Connect Button via ```meteor add aur0r:accounts-learninglayers```. You can find the plugin in AtmosphereJS at [https://atmospherejs.com/aur0r/accounts-learninglayers](https://atmospherejs.com/aur0r/accounts-learninglayers).
+For the meteor web framework you can add the Learning Layers OpenID Connect Button via ```meteor add aur0r:accounts-learninglayers```. You can find the plugin in AtmosphereJS at [https://atmospherejs.com/aur0r/accounts-learninglayers](https://atmospherejs.com/aur0r/accounts-learninglayers). License: MIT.
 
