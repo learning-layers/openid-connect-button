@@ -1,3 +1,4 @@
+<a name="openid-connect-button"/>
 openid-connect-button
 ==
 
@@ -7,27 +8,30 @@ An OpenID Connect Button to instrument Web pages with OpenID Connect authenticat
 
 **Table of Contents**
 
-- [openid-connect-button](#)
-	- [Try it](#)
-- [Developer Tutorial](#)
-	- [Add the OpenID Connect Button to a Web page](#)
-		- [Step 1: Register page as OpenID Connect client](#)
-		- [Step 2: Include OpenID Connect Button script on client page](#)
-		- [Step 3: Add HTML element representing button to the client page](#)
-		- [Step 4: Handle sign in with JavaScript callback](#)
-	- [License](#)
-- [Framework plugins](#)
-	- [Meteor (web framework)](#)
+- [openid-connect-button](#openid-connect-button)
+	- [Try it](#try-it)
+- [Developer Tutorial](#developer-tutorial)
+	- [Add the OpenID Connect Button to a Web page](#add-oidc-to-web-page)
+		- [Step 1: Register page as OpenID Connect client](#add-oidc-to-web-page-1)
+		- [Step 2: Include OpenID Connect Button script on client page](#add-oidc-to-web-page-2)
+		- [Step 3: Add HTML element representing button to the client page](#add-oidc-to-web-page-3)
+		- [Step 4: Handle sign in with JavaScript callback](#add-oidc-to-web-page-4)
+	- [License](#license)
+- [Framework plugins](#framework-plugins)
+	- [Meteor (web framework)](#meteor-framework)
 
+<a name="try-it"/>
 Try it
 --
 
 TODO: add link to working online demo.
 
+<a name="developer-tutorial"/>
 Developer Tutorial
 ==
 This tutorial provides step-by-step instructions on how to instrument an arbitrary Web page client with the OpenID Connect Button to enable authentication and access to user information. The button is automatically rendered based on a couple of attributes that define OpenID Connect-relevant configuration details. Developers receive access to different OpenID Connect related information such as provider configuration, tokens, and user information. When users of a client sign in with an OpenID Connect provider, the client gets an *access token*, which can be further used to make calls to service APIs capable of interacting with the OpenID Connect provider.
 
+<a name="add-oidc-to-web-page"/>
 Add the OpenID Connect Button to a Web page
 --
 Adding the OpenID Connect button to a Web page client is done in four simple steps:
@@ -37,6 +41,7 @@ Adding the OpenID Connect button to a Web page client is done in four simple ste
 - __Step 3: Add HTML element representing button to the client page.__
 - __Step 4: Handle sign in with JavaScript callback.__
 
+<a name="add-oidc-to-web-page-1"/>
 ###Step 1: Register page as OpenID Connect client
 First step is to make the OpenID Connect server aware of your client page. Necessary prerequisite is that your page is deployed under a publicly accessible URL, ideally hosted on a secure HTTP server. Therefore, you need to provide a couple of details about your client to the OpenID Connect server (most importantly a redirect URI). In turn, the server generates a client ID and a client secret to be used in later steps.
 
@@ -61,6 +66,7 @@ OpenID Connect client registration frontends look different on different server 
 1. __Store values for Client ID and Registration Access Token in a safe place! You will need them for using the OpenID Connect Button and for any re-configuration of your OpenID Connect client!__
 1. In case you have to re-configure your client, select __*Self-service client registration*__ from the *Developer* section in the menu on the left, enter Client ID and Registration Access Token in the fields on the right and click the button __*Edit an existing client*__. If you are an administrator of the OpenID Connect server, you can make use of the menu entry __*Manage Clients*__ in the *Administrative* section in the menu on the left.
 
+<a name="add-oidc-to-web-page-2"/>
 ###Step 2: Include OpenID Connect Button script on client page
 
 Include the following script just before the closing body tag:
@@ -80,6 +86,7 @@ Include the following script just before the closing body tag:
 
 The OpenID Connect Button script depends on [jQuery](http://jquery.com/), [bootstrap](http://getbootstrap.com/), [jsjws](https://github.com/kjur/jsjws), and [jsrsasign](https://github.com/kjur/jsrsasign). Be sure to include all required dependencies to JS and CSS, as demonstrated in `index.html`.
 
+<a name="add-oidc-to-web-page-3"/>
 ###Step 3: Add HTML element representing button to the client page
 
 Include a HTML element that represents the OpenID Connect Button. The script included in the previous step will transform the element into a button appearance. Use the client ID you retrieved from step 1.
@@ -105,6 +112,7 @@ The HTML element must define the following data attributes:
 | *data-scope*    | Space-separated OpenID Connect scopes. The standard scope is simply "openid", but other scopes are usually also available (e.g. email, address, profile). A full list of scopes supported by the OpenID Connect provider is available via OpenID Connect discovery of provider configuration (see below for more information) |
 | *data-callback* | Name of a callback function defined in a script tag of the client page handling the outcome of the sign in process done by the button (see next step). |
 
+<a name="add-oidc-to-web-page-4"/>
 ###Step 4: Handle sign in with JavaScript callback
 
 In a script of your client page define a JavaScript function that is triggered after the OpenID Connect Button is loaded. The name of the function must match the value of the *data-callback* attribute of the HTML element defined in Step 3. The function is passed an object that represents the authorization result.
@@ -135,14 +143,17 @@ function signinCallback(result) {
 		console.log(result);
 	}
 }
+<a name="license"/>
 ```
 License
 --
 The OpenID Connect Button is released under the BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.  
 
+<a name="framework-plugins"/>
 Framework plugins
 ==
 
+<a name="meteor-framework"/>
 Meteor (web framework)
 --
 For the meteor web framework you can add the Learning Layers OpenID Connect Button via ```meteor add aur0r:accounts-learninglayers```. You can find the plugin in AtmosphereJS at [https://atmospherejs.com/aur0r/accounts-learninglayers](https://atmospherejs.com/aur0r/accounts-learninglayers).
