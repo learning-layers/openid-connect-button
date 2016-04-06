@@ -5,9 +5,6 @@ An OpenID Connect Button to instrument Web pages with OpenID Connect authenticat
 
 ![OpenID Connect Button sample instance](./oidc-button-sample.png "OpenID Connect Button sample instance")
 
-Try it
---
-
 **Table of Contents**
 
 - [openid-connect-button](#)
@@ -19,6 +16,9 @@ Try it
 		- [Step 3: Add HTML element representing button to the client page](#)
 		- [Step 4: Handle sign in with JavaScript callback](#)
 	- [License](#)
+
+Try it
+--
 
 TODO: add link to working online demo.
 
