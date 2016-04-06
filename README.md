@@ -16,6 +16,8 @@ An OpenID Connect Button to instrument Web pages with OpenID Connect authenticat
 		- [Step 3: Add HTML element representing button to the client page](#)
 		- [Step 4: Handle sign in with JavaScript callback](#)
 	- [License](#)
+- [Framework plugins](#)
+	- [Meteor (web framework)](#)
 
 Try it
 --
@@ -137,3 +139,11 @@ function signinCallback(result) {
 License
 --
 The OpenID Connect Button is released under the BSD [license](https://github.com/nmaster/openid-connect-button/blob/master/LICENSE) by Dominik Renzel, Advanced Community Information Systems (ACIS) Group, RWTH Aachen University, Germany.  
+
+Framework plugins
+==
+
+Meteor (web framework)
+--
+For the meteor web framework you can add the Learning Layers OpenID Connect Button via ```meteor add aur0r:accounts-learninglayers```. You can find the plugin in AtmosphereJS at [https://atmospherejs.com/aur0r/accounts-learninglayers](https://atmospherejs.com/aur0r/accounts-learninglayers).
+
