@@ -1,3 +1,6 @@
+# Please note, that this project ist deprecated. New Repo: https://github.com/rwth-acis/openidconnect-signin
+
+
 <a name="openid-connect-button"/>
 openid-connect-button
 ==
